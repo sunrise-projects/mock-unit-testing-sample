@@ -1,0 +1,41 @@
+
+References:
+
+http://site.mockito.org/mockito/docs/current/org/mockito/Mockito.html
+
+http://code.google.com/p/powermock/
+
+http://easymock.org/user-guide.html
+
+https://code.google.com/p/mockito/wiki/MockitoVSEasyMock
+
+http://stackoverflow.com/questions/2864796/easymock-vs-mockito-design-vs-maintainability
+
+----------------
+
+Notes
+
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.when;
+import org.mockito.Matchers;
+
+doReturn(element).when(recordConverter).convert((jaxbElement));
+
+when(context.createMarshaller()).thenReturn(context2.createMarshaller());        
+   
+assertThat(rq.getData().getName(), containsString("RequestString"));
+    
+JAXBContext context2 = JAXBContextFactory.createContext(new Class[]{Record.class}, Collections.EMPTY_MAP, Thread.currentThread().getContextClassLoader());
+when(context.createMarshaller()).thenReturn(context2.createMarshaller());  
+    
+when(configuration.getInt(Matchers.contains(Consts.RETRY_LOGIC_COUNT))).thenReturn(2);
+    
+when(configuration.getInt(Matchers.contains(Consts.RETRY_LOGIC_SLEEPMS))).thenReturn(1);
+    
+assertEquals("5000", result.getLimit());
+
+when(soap.sendRequest(Matchers.isA(Request.class))).thenReturn(rs);
+
